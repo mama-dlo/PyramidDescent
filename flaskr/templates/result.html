@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Result</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/home.css') }}"> 
+
+    </head>
+        <body>
+            {% if error %}
+                <p class=error><strong>Error:</strong> {{ error }}</p>
+            {% endif %}
+            <h1>Result: {{p}}</h1>
+            <p>{{ txt }}</p>
+        </body>
+</html>

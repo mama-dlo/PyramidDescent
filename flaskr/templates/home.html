@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pyramid Descent Puzzle</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/home.css') }}">
+    </head>
+    <body>
+        {% if error %}
+            <p class=error><strong>Error:</strong> {{ error }}</p>
+        {% endif %}
+
+        <div class="form">
+            <form action="http://localhost:5000/result" method="POST" enctype="multipart/form-data">
+                <input type="file" name="txt_input" />
+                <input type="submit" value="Submit" />
+             </form>
+        </div>
+    </body>
+</html>
