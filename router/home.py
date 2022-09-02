@@ -1,5 +1,4 @@
-import logging
-import os, sys
+import os
 from flask import Flask, Blueprint, request, render_template
 from werkzeug.utils import secure_filename
 
@@ -12,20 +11,18 @@ def hello():
 
 @home.route('/result', methods=['POST', 'GET'])
 def result():
-    txt=""
-    path=""
-    if request.method == 'POST'and 'txt_file' in request.files:
-        list_of_files = request.files.getlist('txt_file')
-        if len(list_of_files) > 1:
-            error = "I can only process one puzzle at a time."
-            return render_template('home.html', error=error)
+    if request.method == 'POST':
+        txt=""
         f = request.files['txt_input']
-        f.save(os.path.join('flaskr/static/io/', secure_filename(f.filename)))
-        f.seek(0)
-        txt = f.read()
-        txt = str(txt, 'utf-8')
+
+        filename = secure_filename(f.filename)
+
+        f.save('flaskr/static/io/' + filename)
+        file = open('flaskr/static/io/' + filename,"r")
+        txt = file.readlines()
+
         #TODO: implement puzzle and send thru template
-    return render_template('result.html', p=path, txt=txt)
+    return render_template('result.html', txt=txt)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port = 8000, threaded = True, debug = True)

@@ -11,9 +11,9 @@
             <p class=error><strong>Error:</strong> {{ error }}</p>
         {% endif %}
 
-        <div class="form">
+        <div class="form"> <p>Upload text (.txt) file:</p>
             <form action="http://localhost:5000/result" method="POST" enctype="multipart/form-data">
-                <input type="file" name="txt_input" />
+                <input type="file" name="txt_input" accept=".txt"/>
                 <input type="submit" value="Submit" />
              </form>
         </div>

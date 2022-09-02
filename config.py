@@ -2,10 +2,9 @@ from os import environ, path
 
 basedir = path.abspath(path.dirname(__file__))
 
-class Config:
-    SECRET_KEY = environ.get('SECRET_KEY')
-    DATABASE_URI = ''
-
+SECRET_KEY = environ.get('SECRET_KEY')
+DATABASE_URI = ''
+UPLOAD_FOLDER = './static/io/'
 class ProdConfig:
     FLASK_ENV = 'production'
     DEBUG = False
